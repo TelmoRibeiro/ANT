@@ -1,0 +1,35 @@
+% @ telmo - some important packages:
+\usepackage{graphicx} % add figures & more
+\usepackage{listings} % properly list code
+\usepackage{xcolor}   % colors needed for pretty-ish code
+% @ telmo - some important commands:
+\IEEEoverridecommandlockouts
+% color scheme:
+\definecolor{codegreen} {rgb}{   0, 0.60,    0}
+\definecolor{codegray}  {rgb}{0.50, 0.50, 0.50}
+\definecolor{codepurple}{rgb}{0.58,    0, 0.82}
+\definecolor{backcolor}{rgb}{0.95, 0.95, 0.95}
+% code style:
+\lstdefinestyle{codestyle}{
+    backgroundcolor=\color{backcolor},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=codestyle}
+% @ telmo - enchanting table:
+\graphicspath{ {./images/} }
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
