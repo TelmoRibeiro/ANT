@@ -1,0 +1,20 @@
+In this section we will go over the environment and tools surrounding XDP, and how these behave.
+
+We'll firstly talk about \textbf{eBPF}. It provides an instruction set and an execution environment inside the Linux kernel. It is used to modify the processing of packets in the kernel and allows the programming of network devices. Code is written in restricted C language and then compiled into eBPF instructions. The resulting eBPF code can be processed in the kernel or by programmable devices such as SmartNICs.\cite{FastXDP}
+
+To execute eBPF code, we need to attach it to an interface first, that allows custom programming. This interface is called a hook. Hooks allow the registration of programs for certain events. This is where XDP comes in.
+
+There are a few libraries/tools that are considered the main pillars for XDP program developing and any related tasks:
+\begin{itemize}
+    \item \textbf{BPFTools:} a collection of command-line tools that are used to interact with the Linux Kernel, they provide multiple functionalities for working with eBPF programs, maps and related features.
+    \item \textbf{XDP-Tools:}
+\end{itemize}
+
+While XDP is supported by any Linux kernel since the 4.8 version, for our feasibility test we've decided to use Ubuntu 22.04.4 LTS.
+
+% @ telmo - things you want to mention:
+%   linux - ubuntu  
+%   3 main libraries/tools (bpftools & xdp-tools & libbpf)
+%   clang llvm gcc kernel-headers
+%   network debugging tools   
+%   maybe reference NICs and drivers - although not used in this segment "should" be used on the next
