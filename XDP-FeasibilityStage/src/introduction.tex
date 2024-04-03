@@ -1,28 +1,27 @@
-% @ telmo - original text was reworked!
-% THE PROBLEM %
+% PROBLEM %
 The current stage of the modern world we live in, could only be attained due to the progress in data treatment and transmission, both evolving through a multitude of efforts regarding networks, protocols, and tools developed by engineers and scientists alike, pushing the underlying technologies forward.
-The viability of such technologies depends on concrete implementations to tackle firewalling, for instance, where distributed denial-of-services (DDoS) attacks are relatively straightforward to preform yet their countering is still subject of much concern, and the continuous pursuit of improvements in areas as load balancing and network analysis.
+The viability of such technologies depends on concrete implementations to tackle firewalling\cite{XDPDDoS}, for instance, where distributed denial-of-services (DDoS) attacks are relatively straightforward to preform yet their countering is still subject of much concern, and the continuous pursuit of improvements in areas as load balancing and network analysis.
 
-% THE SOLUTION - PRESENTATION %
+% SOLUTION - PRESENTATION %
 A partial solution regarding the aforementioned problems was provided through the recent developments on the \textit{eXpress Data Path (XDP)} framework, described as the lowest layer of the Linux network stack, enabling developers to install programs that process packets into the Linux kernel \cite{FastXDP}.
 
-% THE SOLUTION - DETAILS %
+% SOLUTION - DETAILS %
 \textit{Extended Berkeley Packet Filter (eBPF)} programs modify the kernel operation in runtime, not requiring kernel recompilation \cite{FastXDP}.
 Technologies developed over it, essentially, can bypass later processing by higher network layers, deciding on the earlier layers what the fate of a packet should be thus, accelerating the packet processing task.
 Such is the case for the \textit{XDP} framework, where a program is developed with the goal to express a set of behaviours which can be translated into custom packet processing, implemented through its recurring calls for every incoming network packet.
 \textit{XDP} can be implemented through three different modes: \textbf{(1)} Generic \textit{XDP} - where programs are loaded as part of the ordinary network path, allowing the least gain in performance from all modes but not requiring explicit support from specific hardware, \textbf{(2)} Native \textit{XDP} - where the program is loaded by the Network Interface Card (NIC) thus requiring support from the driver but resulting in measurable performance gain, and lastly \textbf{(3)} Offloaded \textit{XDP} - where the program is loaded on the NIC, requiring support from the interface itself, but consequently bypassing the CPU altogether, therefore, providing greater performance.
-\textit{XDP} programs are attained by incorporating primitive actions which in turn, will express desirable properties, those primitive actions are: \textit{XDP\_PASS} - allowing the ordinary path through the network stack, \textit{XDP\_DROP} - dropping the packet without trace point exceptions, \textit{XDP\_ABORTED} - dropping the packet with trace point exceptions, \textit{XDP\_TX} - transmitting the packet back to the NIC and \textit{XDP\_REDIRECT} - redirecting the packet to another NIC or socket.
+\textit{XDP} programs are attained by incorporating primitive actions which in turn, will express desirable properties, those primitive actions are: \textit{XDP\_PASS} - allowing the ordinary path through the network stack, \textit{XDP\_DROP} - dropping the packet without trace point exceptions, \textit{XDP\_ABORTED} - dropping the packet with trace point exceptions, \textit{XDP\_TX} - transmitting the packet back to the NIC, and \textit{XDP\_REDIRECT} - redirecting the packet to another NIC or socket.
 
-% THE SCOPE %
+% SCOPE %
 At the local view, \textit{XDP} allows a finer and faster control over packet processing. 
 The macroscopic view amounts to networks less prone to attacks and with minor delays.
 The latter can be explained by the performance gain on packet processing, which contributes in reducing the instances where the aforementioned step is the network bottleneck.
 
-% THE WORK %
+% WORK %
 This paper lays the ground for benchmarks over primitive \textit{XDP} capabilities.
 Initially, offering an overview on the \textit{XDP} framework while providing some background on the concept.
 Then it follows with the tools and environment used to achieve the findings and the accompanying methodology and results from the feasibility test.
-Latter, the future work explicits the road-map and the build up over this results including a few early reflections.
+Latter, the future work explicits the roadmap and the build up over this results including a few early reflections.
 
 % @ telmo - original text by henrique:
 % In today's ever-evolving digital landscape, where data transmission is the backbone of modern communication, efficient packet processing is paramount. From network security to performance optimization, the ability to handle packets swiftly and effectively is a fundamental requirement for any network infrastructure. Enter eXpress Data Path (XDP) is a groundbreaking technology within the Linux kernel designed to accelerate packet processing tasks. It provides a high-performance framework for handling network packets at the earliest possible stage of the Linux networking stack, offering unprecedented speed and flexibility.\cite{Vyavahare_2023}

@@ -1,20 +1,48 @@
-In this section we will go over the environment and tools surrounding XDP, and how these behave.
+% INTRO %
+The environment section concerns to the tools, components, and overall resources employed to accomplish the \textit{feasibility objectives} and set up the \textit{implementation stage}.
 
-We'll firstly talk about \textbf{eBPF}. It provides an instruction set and an execution environment inside the Linux kernel. It is used to modify the processing of packets in the kernel and allows the programming of network devices. Code is written in restricted C language and then compiled into eBPF instructions. The resulting eBPF code can be processed in the kernel or by programmable devices such as SmartNICs.\cite{FastXDP}
+% OS %
+\noindent \textbf{Operative System:}
 
-To execute eBPF code, we need to attach it to an interface first, that allows custom programming. This interface is called a hook. Hooks allow the registration of programs for certain events. This is where XDP comes in.
+While \textit{XDP} is supported by the Linux kernel since the 4.8 version, and currently supported by Windows through agreements with NIC manufacturers, the \textit{Feasibility Test} described in the following section was achieved in Ubuntu 22.04.4 LTS.
+Ubuntu not only supports \textit{XDP}, but it also is one of the major Linux distributions to be accommodated by the standard set up process developed by the \textit{Red Hat} team. 
 
-There are a few libraries/tools that are considered the main pillars for XDP program developing and any related tasks:
+% CONCEPTS - eBPF %
+\noindent \textbf{\textit{extended Berkeley Packet Filter}:}
+
+\textit{eBPF} is a key concept in \textit{XDP} development, being the focus of many tools applied, providing both an instruction set and an execution environment in the Linux kernel.
+Used to modify the packet processing framework, code is written in \textit{restricted C} and then compiled into \textit{eBPF} instructions, executed by the CPU on the Generic \textit{XDP}, but it can also be ran by programmable devices such as SmartNICs \cite{FastXDP}.
+
+% LIBRARIES %
+\noindent \textbf{Libraries:}
+
+The \textit{Feasibility Test} was implemented with recourse to a long set of libraries.
+However, the focus set needed to successfully build, execute, and analyze \textit{XDP} programs is the following:
 \begin{itemize}
-    \item \textbf{BPFTools:} a collection of command-line tools that are used to interact with the Linux Kernel, they provide multiple functionalities for working with eBPF programs, maps and related features.
-    \item \textbf{XDP-Tools:}
+    \item \textit{bpftools} - a collection of command-line tools used to interact with the Linux kernel, they provide multiple functionalities to process \textit{eBPF} objects and was mainly used to test its execution.
+    \item \textit{xdp-tools} - a set of utilities used with \textit{XDP} programs to better interact with the Linux system.
+    It was mainly used to load/unload simultaneous \textit{eBPF} object to/from the interface.
+    \item \textit{libbpf} - as a focal point of the \textit{eBPF} environment it allows, for instance, the use of macros such as \textit{SEC}, explained in greater detail upon the next section. 
 \end{itemize}
 
-While XDP is supported by any Linux kernel since the 4.8 version, for our feasibility test we've decided to use Ubuntu 22.04.4 LTS.
+% BUILDING/DUMPING %
+\noindent \textbf{Build/Dump:}
 
-% @ telmo - things you want to mention:
-%   linux - ubuntu  
-%   3 main libraries/tools (bpftools & xdp-tools & libbpf)
-%   clang llvm gcc kernel-headers
-%   network debugging tools   
-%   maybe reference NICs and drivers - although not used in this segment "should" be used on the next
+In order to build and optimize the \textit{eBPF} object, it was leveraged a combination of \textit{GNU Compiler Collection (gcc)} and \textit{Clang}.
+Then, the object was dumped and analyzed with \textit{Low-Level Virtual Machine (LLVM)}.
+
+% UNIX/DEBIAN COMMANDS %
+\noindent \textbf{Network Debugging Tools:}
+
+Network debugging tools and overall Unix commands were essential to, for instance, load/unload and test the \textit{eBPF} object's execution.
+Among others, \textit{ping -4} and \textit{ping -6} were used to send IPv4 and IPv6 packets, a behaviour crucial to examine the proposed use case.
+
+% NICS %
+\noindent \textbf{Network Interface Cards:}
+
+Native \textit{XDP} and Offloaded \textit{XDP} benefit from greater performance, however, they require explicit NIC support.
+Intel, Mellanox, and Broadcom have NIC families extending \textit{XDP} capabilities.
+
+% SOME CONSIDERATIONS % 
+After surveying which NICs support Native \textit{XDP}, the lack of availability made itself evident.
+Although still up for consideration, in order to circumvent this major drawback and establish comparisons, the use of previous results regarding the throughput of such modes is advocated.
