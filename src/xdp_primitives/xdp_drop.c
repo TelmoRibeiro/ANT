@@ -1,8 +1,11 @@
 #include <linux/bpf.h>
 #include <bpf/bpf_helpers.h>
 
-/*  @ telmo -
-    Not Yet Tested
+/* @ telmo
+    not yet tested
+
+    IDEA:
+        - drops every packet without trace point exception
 */
 
 SEC("xdp_drop")

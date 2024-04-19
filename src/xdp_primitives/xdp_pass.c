@@ -1,8 +1,11 @@
 #include <linux/bpf.h>
 #include <bpf/bpf_helpers.h>
 
-/*  @ telmo -
-    Not Yet Tested
+/* @ telmo -
+    not yet tested
+
+    IDEA:
+        - pass every packet (standard network stack handling)
 */
 
 SEC("xdp_pass")
