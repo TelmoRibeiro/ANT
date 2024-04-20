@@ -40,6 +40,6 @@ int xdp_redirect_B_prog(struct xdp_md* ctx) {
     if (eth->h_proto != htons(ETH_P_IPV6)) {
         return XDP_DROP;
     }
-    return bpf_redirect_map(&MY_MAP, INTERFACE_INDEX, BPF_F_INGRESS);
+    return bpf_redirect_map(&MY_MAP, INTERFACE_INDEX, XDP_REDIRECT);
 }
 char _license[] SEC("license") = "GPL";

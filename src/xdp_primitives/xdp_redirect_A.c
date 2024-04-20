@@ -29,6 +29,6 @@ struct bpf_map_def SEC("maps") MY_MAP = {
 
 SEC("xdp_redirect_A")
 int xdp_redirect_A_prog(struct xdp_md* ctx) {
-    return bpf_redirect_map(&MY_MAP, INTERFACE_INDEX, BPF_F_INGRESS);
+    return bpf_redirect_map(&MY_MAP, INTERFACE_INDEX, XDP_REDIRECT);
 }
 char _license[] SEC("license") = "GPL";
