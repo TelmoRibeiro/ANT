@@ -2,7 +2,11 @@
 #include <bpf/bpf_helpers.h>
 
 /* @ telmo -
-    not yet tested
+    TESTED:
+        - Generic Mode
+    NOT TESTED:
+        - Native
+        - Offloaded
 
     IDEA:
         - pass every packet (standard network stack handling)
