@@ -3,7 +3,7 @@
 #include <linux/if_ether.h>
 #include <arpa/inet.h>
 
-# define INTERFACE_INDEX 5
+# define INTERFACE_INDEX 4
 
 /* @ telmo -
     TESTED:

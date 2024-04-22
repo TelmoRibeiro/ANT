@@ -1,7 +1,7 @@
 #include <linux/bpf.h>
 #include <bpf/bpf_helpers.h>
 
-#define INTERFACE_INDEX 4
+#define INTERFACE_INDEX 5
 
 /* @ telmo -
     TESTED:
