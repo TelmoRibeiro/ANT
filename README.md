@@ -1,32 +1,57 @@
 # Advanced Network Topics
+
 ## Project Structure
 - PDFs regarding the two stages
 ### src:
 - source code  
 ### obj:
-- to load objects
+- objects
 
-## How To Load Objects:
+---
+
+## XDP
+
+### Loading Objects
 \$ sudo ip link set \<eth\> xdpgeneric obj \<obj\> sec \<sec\>
 
-## How To Check Objects:
+### Checking Objects
 \$ sudo xdp-loader status
 
-## How To Unload Objects:
+### Unloading Objects
 \$ sudo ip link set \<eth\> xdpgeneric off
 
-## How To Create Virtual Interfaces:
-\$ sudo ip link add \<eth\> type dummy
+---
 
-\$ sudo ip addr add \<ipv4\>/\<prefix\> dev \<eth\>
+## Veth
 
-\$ sudo ip -6 addr add \<ipv6\>/\<prefix\> dev \<eth\>
+### Add Namespaces:
+\$ sudo ip netns add \<netspace\>
 
-\$ sudo ip link set dev \<eth\> up
+### List Namespaces:
+\$ sudo ip netns list
 
-\$ sudo ip addr show
+### Add Veth Pair:
+\$ sudo ip link add \<veth\> type veth peer name \<veth\>
 
-## How To Delete Virtual Interfaces:
-\$ sudo ip link delete \<eth\>
+### Show Interfaces:
+\$ ip link show
 
-\$ sudo ip addr show
+### Veth <-> Namespace:
+\$ sudo ip link set \<veth\> netns \<netspace\>
+
+### Veth Up:
+\$ sudo ip netns exec \<netspace\> ip link set dev \<veth\> up
+
+### Inspect:
+\$ sudo ip netns exec \<netspace\> ip a
+
+### Add IPV4:
+\$ sudo ip netns exec \<netspace\> ip addr add \<addr\>/\<mask\> dev \<veth\>
+
+\$ sudo ip netns exec \<netspace\> ip link set dev \<veth\> up
+
+### Terminal:
+\$ sudo ip netns exec \<netspace\> bash
+
+### tcpdump:
+\$ sudo ip netns exec \<netspace\> tcpdump -i \<veth\> icmp
