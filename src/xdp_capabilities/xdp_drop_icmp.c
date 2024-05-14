@@ -5,8 +5,6 @@
 #include <linux/ipv6.h>
 #include <arpa/inet.h>
 
-// #include <linux/in.h>
-
 SEC("xdp_drop_icmp")
 int xdp_drop_icmp_prog(struct xdp_md* ctx) {
     void* data_end = (void*)(long)ctx->data_end;
