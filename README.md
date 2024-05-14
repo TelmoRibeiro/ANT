@@ -24,34 +24,31 @@
 
 ## Veth
 
-### Add Namespaces:
+### Add (Create) Namespaces
 \$ sudo ip netns add \<netspace\>
 
-### List Namespaces:
+### List (Show) Namespaces
 \$ sudo ip netns list
 
-### Add Veth Pair:
+### Add (Create) Veth Pair
 \$ sudo ip link add \<veth\> type veth peer name \<veth\>
 
-### Show Interfaces:
+### Show Interfaces
 \$ ip link show
 
-### Veth <-> Namespace:
+### Attach Veth to Namespace
 \$ sudo ip link set \<veth\> netns \<netspace\>
 
-### Veth Up:
+### Set Veth Up
 \$ sudo ip netns exec \<netspace\> ip link set dev \<veth\> up
 
-### Inspect:
-\$ sudo ip netns exec \<netspace\> ip a
-
-### Add IPV4:
+### Add IPV4 to Veth
 \$ sudo ip netns exec \<netspace\> ip addr add \<addr\>/\<mask\> dev \<veth\>
 
 \$ sudo ip netns exec \<netspace\> ip link set dev \<veth\> up
 
-### Terminal:
+### Terminal
 \$ sudo ip netns exec \<netspace\> bash
 
-### tcpdump:
-\$ sudo ip netns exec \<netspace\> tcpdump -i \<veth\> icmp
+### Run tcpdump
+tcpdump -i \<eth\> icmp
