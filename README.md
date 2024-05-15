@@ -20,7 +20,7 @@ or
 
 or
 
-\$git sudo xdp-loader unload -a \<eth\>
+\$ sudo xdp-loader unload -a \<eth\>
 
 ---
 
