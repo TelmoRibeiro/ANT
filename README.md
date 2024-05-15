@@ -20,7 +20,8 @@ or
 
 or
 
-\$ sudo xdp-loader unload -a \<eth\>
+\$git sudo xdp-loader unload -a \<eth\>
+
 ---
 
 ## Veth
