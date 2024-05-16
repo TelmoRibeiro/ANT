@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "udp.h": "c"
+        "udp.h": "c",
+        "bpf.h": "c",
+        "bpf_helpers.h": "c"
     }
 }
