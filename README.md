@@ -63,7 +63,7 @@ or
 
 ---
 
-## SET-VETH
+## Bash Script
 
 ### How to Run set-veth.sh
 \$ sudo ./set-veths \<ns\> \<eth\> \<eth\> \<addr\> \<addr\> 
