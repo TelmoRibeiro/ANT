@@ -59,3 +59,11 @@ or
 
 ### Set GRO On
 \$ sudo ethtool -K \<eth\> gro on
+
+
+---
+
+## SET-VETH
+
+### How to Run set-veth.sh
+\$ sudo ./set-veths \<ns\> \<eth\> \<eth\> \<addr\> \<addr\> 
