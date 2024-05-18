@@ -54,8 +54,8 @@ or
 ### Set Channels
 \s sudo ethtool -L \<eth\> tx \<number\> rx \<number\>
 
-# List Flags
+### List Flags
 \s sudo ethtool -k \<eth\>
 
-# Set GRO On
+### Set GRO On
 \$ sudo ethtool -K \<eth\> gro on
