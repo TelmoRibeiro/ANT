@@ -27,19 +27,35 @@ or
 ## Veth
 
 ### Add (Create) Namespaces
-\$ sudo ip netns add \<netspace\>
+\$ sudo ip netns add \<ns\>
 
 ### Add (Create) Veth Pair
-\$ sudo ip link add \<veth\> type veth peer name \<veth\>
+\$ sudo ip link add \<eth\> type veth peer name \<eth\>
 
 ### Attach Veth to Namespace
-\$ sudo ip link set \<veth\> netns \<netspace\>
+\$ sudo ip link set \<eth\> netns \<ns\>
 
 ### Add IPV4 to Veth
-\$ sudo ip netns exec \<netspace\> ip addr add \<addr\>/\<mask\> dev \<veth\>
+\$ sudo ip netns exec \<ns\> ip addr add \<addr\>/\<mask\> dev \<eth\>
 
 ### Set Veth Up
-\$ sudo ip netns exec \<netspace\> ip link set dev \<veth\> up
+\$ sudo ip netns exec \<ns\> ip link set dev \<eth\> up
 
 ### Run Terminal
-\$ sudo ip netns exec \<netspace\> bash
+\$ sudo ip netns exec \<ns\> bash
+
+---
+
+## Bench
+
+### List Channels
+\$ sudo ethtool -l \<eth\>
+
+### Set Channels
+\s sudo ethtool -L \<eth\> tx \<number\> rx \<number\>
+
+# List Flags
+\s sudo ethtool -k \<eth\>
+
+# Set GRO On
+\$ sudo ethtool -K \<eth\> gro on
