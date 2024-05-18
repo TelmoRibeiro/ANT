@@ -52,14 +52,13 @@ or
 \$ sudo ethtool -l \<eth\>
 
 ### Set Channels
-\s sudo ethtool -L \<eth\> tx \<number\> rx \<number\>
+\$ sudo ethtool -L \<eth\> tx \<number\> rx \<number\>
 
 ### List Flags
-\s sudo ethtool -k \<eth\>
+\$ sudo ethtool -k \<eth\>
 
 ### Set GRO On
 \$ sudo ethtool -K \<eth\> gro on
-
 
 ---
 
